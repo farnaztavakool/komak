@@ -1,0 +1,27 @@
+{
+  "name": "google_cloud",
+  "version": "1.0.0",
+  "description": "modules used for this project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./node_modules/babel-cli/bin/babel-node.js --presets env server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.11.4",
+    "@babel/preset-env": "7.11.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "express": "4.17.1",
+    "mongodb": "3.6.0",
+    "mongoose": "5.10.1",
+    "nodemon": "2.0.4"
+  }
+}
