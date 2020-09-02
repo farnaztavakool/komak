@@ -1,24 +1,37 @@
 import mongoose from 'mongoose'
 import {contactSchema} from '../models/crmModels'
 
+import uniqueValidator from 'mongoose-unique-validator'
 // Contact is a constructor
-const Contact = mongoose.model('Contact', contactSchema);
 
-export const addNewContact = (req,res) => {
+// schema is for the structure of the document
+// model is the interface for the schema
 
-    let newContact = new Contact(req.body)
+const User = mongoose.model('User', contactSchema);
+const validate = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    newContact.save((err,contact) => {
+    // test for a match in the string
+    return re.test(String(email).toLowerCase)
+}
+export const addNewUser = (req,res) => {
+    
+    
+    let newUser = new User(req.body)
+    
+    newUser.save((err,user) => {
         if (err) {
-            res.send(err );
+            console.log(err)
+            res.status(500).send(err)
         }
-
-        res.json(contact)
+        // alert(user)
+        console.log(user)
+        res.json(user)
     })
 };
 
 export const getContact = (req, res) => {
-    Contact.find({}, (err, contact) => {
+    User.find({}, (err, contact) => {
         if (err) {
             res.send(err)
         }
@@ -27,7 +40,7 @@ export const getContact = (req, res) => {
 }
 
 export const getContactWithId = (req, res) => {
-    Contact.findById(req.params.contactID, (err, contact) => {
+    User.findById(req.params.contactID, (err, contact) => {
         if (err) {
             res.send(err)
         }
@@ -36,7 +49,7 @@ export const getContactWithId = (req, res) => {
 };
 
 export const updateContact = (req,res) => {
-    Contact.findByIdAndUpdate({_id:req.params.contactID},req.body,{new:true, useFindAndModify: false}, (err,contact) => {
+    User.findByIdAndUpdate({_id:req.params.contactID},req.body,{new:true, useFindAndModify: false}, (err,contact) => {
         if (err) {
             res.send(err)
         }
@@ -50,6 +63,15 @@ export const deleteCotnact = (req,res) => {
     // put res.send after the function 
     // run asynchronously and would return the 
     // result object without deleting 
-    Contact.deleteOne({"_id":req.params.contactID}, (err, contact) => {
+    User.deleteOne({"_id":req.params.contactID}, (err, contact) => {
         res.send('done')})
+}
+
+export const reset = (req, res) => {
+    User.remove({}, (err) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send("deleted all the documents in the collection")
+    })
 }
