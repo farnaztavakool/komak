@@ -1,0 +1,15 @@
+/Library/Frameworks/Python.framework/Versions/3.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'hello.py': [Errno 2] No such file or directory
+/Library/Frameworks/Python.framework/Versions/3.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'hello.py': [Errno 2] No such file or directory
+/Library/Frameworks/Python.framework/Versions/3.7/Resources/Python.app/Contents/MacOS/Python: can't open file 'hello.py': [Errno 2] No such file or directory
+hello
+hello
+hello
+/bin/sh: /Library/Frameworks/Python.framework/Versions/3.7/bin$: No such file or directory
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello

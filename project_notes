@@ -1,0 +1,20 @@
+***********************************************
+technical notes through out the project 
+***********************************************
+
+what is the difference between:
+
+	const x = y
+	const {x} = y
+
+answer: https://stackoverflow.com/questions/41058569/what-is-the-difference-between-const-and-const-in-javascript/41058622
+
+------------------------------------------------------------------------------------------
+How to alert/ console log err message in js:
+
+	err.response["data"]["message"]
+
+works for this project need to check the whole ["data"]["message"].
+
+------------------------------------------------------------------------------------------
+

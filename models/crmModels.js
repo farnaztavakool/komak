@@ -58,6 +58,8 @@ export const contactSchema = new Schema ({
 
 });
 
+// pre middleware function called befor saving the document 
+// next is used to run the other middlewares
 contactSchema.pre('save', function(next) {
     var user = this
 
