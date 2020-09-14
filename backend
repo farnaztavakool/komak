@@ -1,0 +1,104 @@
+***********************************************
+technical notes through out the project 
+***********************************************
+
+ComponentDidMount/ ComponentDidUpdate, Hooks
+
+What do we mean by side effects in react?
+
+Sometimes, we want to run some additional code after React has updated the DOM. Network requests, manual DOM mutations, and logging are common examples of effects that don’t require a cleanup. We say that because we can run them and immediately forget about them. Let’s compare how classes and Hooks let us express such side effects.
+
+e.g:
+	constructor(props) {
+    	super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+
+const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+------------------------------------------------------------
+Document can be found:
+https://reactjs.org/docs/hooks-effect.html
+------------------------------------------------------------
+how to redirect?
+
+save a state relating to the condition of redirecting which can be checked out in render:
+
+	e.g:
+		if (redirect) return <Redirect to='/'>
+------------------------------------------------------------
+
+how did we make the covid map?
+
+	_need for a token for the google map api 
+
+	_function SimpleMap() {
+    const [results, setResults] = useState([]);
+    const [latest, setLatest] = useState([])
+
+    useEffect(() => {
+        axios.all ([
+            axios.get("https://corona.lmao.ninja/v2/countries?sort=country"),
+            axios.get("https://corona.lmao.ninja/v2/all")
+        ])
+        .then((res) => {
+            setResults(res[0].data)
+            setLatest(res[1].data)
+            console.log(results[0].cases)
+            // console.log(latest)
+        })
+        .catch((err)=> console.log(err))
+    })
+    const date = new Date(parseInt(latest.updated))
+    const lastUpdated = date.toString()
+
+    const countriesLocation = results.map((data,i) => {
+        return (
+            <div
+                lat={data.countryInfo.lat}
+                lng = {data.countryInfo.long}
+                style= {{
+                    color:"red",
+                    backgroundColor: "#FFF",
+                    height:"25px",
+                    width: "35px"
+                }}
+            >
+                {data.cases}
+            </div>
+
+        )});
+ 
+
+After the map is rendered we will get requirest to ninja to get the data
+loop through the data and create a div for each one 
+
+
+this code is only the map api, we have another file which is the layout of the map page 
+we then import map api into that 
+
+--------------------------------------------------------------------------
+
+for the web scrapping I scheduled it for each hour using 
+
+	what is cron:  job scheduler couldnt find a legit src about how it works will dig in later
+
+	:crontab -e : would open the editor to put the script for cron
+	: e.g: * * * * * cd $LOCATION OF FILE && $LOCATION OF PYTHON/ python3 file.py >> $LOCATION OF OUTPUT/output.txt 
+
+
+	0 * * * * cd /Users/farnaz/Desktop/google_could/scrape && /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 hello.py >> /Users/farnaz/Des$

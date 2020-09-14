@@ -1,13 +1,11 @@
 ***********************************************
 technical notes through out the project 
 ***********************************************
+How to alert/ console log err message in js:
 
-what is the difference between:
+	err.response["data"]["message"]
 
-	const x = y
-	const {x} = y
-
-answer: https://stackoverflow.com/questions/41058569/what-is-the-difference-between-const-and-const-in-javascript/41058622
+works for this project need to check the whole ["data"]["message"].
 
 ------------------------------------------------------------------------------------------
 
