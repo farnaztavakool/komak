@@ -1,6 +1,8 @@
 import routes from './route.js';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser'
+
+import contactSchema from './models/crmModels';
 const express = require('express')
 const app = express()
 
@@ -11,7 +13,7 @@ const port = 8080
 // connecting to the URL 
 
 // schema defines the role for what the database should accept
-const database = "mongodb://localhost/google_cloud"
+const database = "mongodb://localhost/new"
 
 mongoose.Promise = global.Promise;
 mongoose.connect(database, {
@@ -19,7 +21,7 @@ mongoose.connect(database, {
     useUnifiedTopology: true
 }) 
     .catch(error => console.log(error))
-
+    .then(() => console.log("connected to mongodb "))
 // mongoose?
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

@@ -1,4 +1,4 @@
-import {addNewUser, getContact, getContactWithId, updateContact, deleteCotnact, reset} from "./controler/crmControler"
+import {addNewUser, getContact, getContactWithId, updateContact, deleteCotnact, reset, login} from "./controler/crmControler"
 
 const routes = (app) => {
 
@@ -9,6 +9,8 @@ const routes = (app) => {
         .get(getContact)
         .post(addNewUser)
     
+    app.route('/login')
+        .post(login)
     // and example to test the URL http://localhost:8080/contact/5f4866ac6d1f641e256d0451
     // I thought it would be http://localhost:8080/contact?contactID=5f4866ac6d1f641e256d0451
 

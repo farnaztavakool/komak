@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 import {contactSchema} from '../models/crmModels'
 
 import uniqueValidator from 'mongoose-unique-validator'
+var bcrypt = require('bcrypt');
+
 // Contact is a constructor
 
 // schema is for the structure of the document
@@ -30,6 +32,33 @@ export const addNewUser = (req,res) => {
     })
 };
 
+export const login = (req,res) => {
+    // we have to make sure the uniquness of email
+    // can we have more than one res.status(500) in 
+    User.findOne({"email" : req.body.email, "__v":0}, (err, contact) => {
+        if (err || contact== null) {
+            console.log(err)
+            if (contact == null) err = "No user with this email"
+            res.status(500).send(err)
+        }
+        else {
+            // how are the password compares
+            console.log(typeof(contact['password']))
+            bcrypt.compare(req.body.password, contact['password'])
+                .then(result => {
+                    if (result) res.send({contact})
+                    res.status(500).send("Invalid password")
+                })
+                .catch (err => res.status(500).json(err))
+            
+        }
+    })
+    // .then (contact => {
+    //     if (contact == null) res.status(500).send("no user")
+    //     res.json(contact)
+    // })
+    // .catch(err => res.status(500).json(err))
+}
 export const getContact = (req, res) => {
     User.find({}, (err, contact) => {
         if (err) {

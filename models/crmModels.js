@@ -11,7 +11,8 @@ const Schema = mongoose.Schema;
 
 export const contactSchema = new Schema ({
     
-   
+// some of the field keywords are defined hence no need to define them
+// otherwise x: { func: ()=>{}}   
 
     firstName: {
         type: String,
@@ -20,15 +21,19 @@ export const contactSchema = new Schema ({
     },
     lastName: {
         type: String,
-        // required: "Enter the LastName"
+        required: "Enter the LastName"
     },
 
     email: {
         type: String,
         lowercase:true,
         required: "Enter Email",
-
+        
         match:[/\S+@\S+\.\S+/,'invalid email'],
+        hello: {
+            unique:true,
+            messag: "There is already an account with this password"
+        }
     },
 
     phoneNumber: {
@@ -48,8 +53,8 @@ export const contactSchema = new Schema ({
     password: {
         type: String,
         required: [true, 'enter password'],
-        validate: {
-            validator: (pass)=> {
+        check_pass: {
+            checking: (pass)=> {
                 return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(pass)
             },
         message: "invalid password"
@@ -76,3 +81,6 @@ contactSchema.pre('save', function(next) {
         });
     });
 });
+
+
+                

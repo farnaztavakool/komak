@@ -11,3 +11,17 @@ answer: https://stackoverflow.com/questions/41058569/what-is-the-difference-betw
 
 ------------------------------------------------------------------------------------------
 
+node_module folder should not be included in the repo and commits npm install will go through the node_module.js and using npm install will install the dependancies  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+info about package.json and npm 										->>>>>> https://nodejs.dev/learn/the-package-lock-json-file
+
+	to create the package.json file ---> npm init
+
+	to install and add a module to package.json ---> npm install ${PACKAGE_NAME} --save.                       ->>https://stackoverflow.com/questions/19578796/what-is-the-save-option-for-npm-install
+
+-----------------------------------------------------------------------------------------
+
+to start/restart mongo: brew services restart mongodb-community

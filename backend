@@ -102,3 +102,27 @@ for the web scrapping I scheduled it for each hour using
 
 
 	0 * * * * cd /Users/farnaz/Desktop/google_could/scrape && /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 hello.py >> /Users/farnaz/Des$
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Promises in Java script:
+
+
+	functions are synchronous therefor the initial version of promises is using call back functions 
+
+	const x = function(arg, callbackfunction) {
+
+		body(arg)
+		callbackfunction()
+	}
+
+
+
+	
+	instead of using callback functions we will be using promise which is:
+
+
+		A Promise is an object representing the eventual completion or failure of an asynchronous operation
+
+
+
+

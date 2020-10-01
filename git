@@ -1,0 +1,44 @@
+
+
+***********************************************
+technical notes on using and working with git 
+***********************************************
+
+
+Begin a remote git repository:
+
+	git init ---> would create a local repo
+
+ 	git commit -m "First commit"
+
+	git remote add origin ${remote_repo_URL}
+
+	git remote -v 
+	//this is only for verification
+
+	git push -u origin master
+
+
+
+When I created the remote repo on github add the README file which later gave me error when I wanted to push from local to remote since I had to pull the README file first
+
+
+	error received when tried to pull the remote repo :The “fatal: refusing to merge unrelated histories” Git error
+	
+
+	Solution: git pull origin master --allow-unrelated-histories
+
+	Reason why the error happened: https://www.educative.io/edpresso/the-fatal-refusing-to-merge-unrelated-histories-git-error
+
+
+
+------------------------------------------------------------------------------------------
+
+how to merge one file from another branch to other:
+
+	go to the branch you need to merge:
+		git checkout ${BRANCH_NAME} ${FULL_PATH_OF_FILE}
+
+
+
+
